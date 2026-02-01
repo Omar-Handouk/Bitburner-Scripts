@@ -1,0 +1,21 @@
+{
+    "bitburner.authToken": "NLUFJojF3IniZoh31eUowGG10m013ypINXyGZjExDickfSpblNCTwtS8UGrnGD3G",
+    "bitburner.scriptRoot": "./",
+    "bitburner.fileWatcher.enable": true,
+    "bitburner.showFileWatcherEnabledNotification": true,
+    "bitburner.showPushSuccessNotification": true,
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "jsConfig.json": true,
+        "NetScriptDefinitions.d.ts": true,
+        "package.json": true,
+        "pnpm-lock.yaml": true,
+        "**/.vscode": true,
+        "**/node_modules": true
+    }
+}
