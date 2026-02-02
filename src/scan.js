@@ -1,20 +1,30 @@
-import { main as hostInfo } from 'utils/host-info.js';
+import hostInfo from 'src/host-info.js';
 /** @param {NS} ns*/
 export const main = (ns) => {
-    bfs(ns, 'home');
+    const { a } = ns.flags([['a', false]]);
 
     // if flag 'a' (all) is set return all server, else only targets, useful for script killing
-    const userServers = [...ns.getPurchasedServers(), 'home'];
+    const userServers = a ? [] : [...ns.getPurchasedServers(), 'home'];
 
     // Get all targets and exclude user hosts
-    const targets = [...visisted.values()].filter(target => !userServers.includes(target)).map(target => hostInfo(ns, target));
+    const targets = scan(ns, 'home').filter(target => !userServers.includes(target));
     
+    ns.tprint(targets);
+}
+
+/**
+ * @param {NS} ns 
+ * @param {String} parent 
+ */
+const scan = (ns, parent = 'home') => {
+    bfs(ns, parent);
+    const targets = [...visisted.values()].map(target => hostInfo(ns, target));
+
     return targets;
 }
 
 const visisted = new Set();
 /**
- * 
  * @param {NS} ns 
  * @param {String} parent 
  */
@@ -31,3 +41,5 @@ const bfs = (ns, parent) => {
         children.push(...ns.scan(child));
     }
 }
+
+export default scan;
